@@ -53,8 +53,9 @@ def base():
 @login_required
 def admin():
     id = current_user.id
+    our_users = Users.query.order_by(Users.date_added)
     if id == 17:
-        return render_template("admin.html")
+        return render_template("admin.html", our_users=our_users)
     else:
         flash("Sorry you must be the Admin")
         return redirect(url_for('dashboard'))
@@ -356,8 +357,6 @@ class NamerForm(FlaskForm):
     submit = SubmitField("Submit")
 
 
-# def index():
-   # return "<h1>Hello World!</h1>"
 
 @app.route('/user/add', methods=['GET', 'POST'])
 def add_user():

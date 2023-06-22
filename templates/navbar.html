@@ -9,7 +9,13 @@
 
 
         <li class="nav-item">
-          <a class="nav-link" href={{url_for('name')}}>Name</a>
+          <a class="nav-link" href={{url_for('name')}}>Imię</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={{url_for('add_post')}}>Dodaj Post</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={{url_for('posts')}}>Posty</a>
         </li>
         {% if current_user.is_authenticated %}
         <li class="nav-item">
@@ -17,28 +23,17 @@
         </li>
         {% if current_user.id == 17 %}
         <li class="nav-item">
-          <a class="nav-link" href={{url_for('admin')}}>Admin</a>
+          <a class="nav-link" href={{url_for('admin')}}>Panel administracyjny</a>
         </li>
         {% endif %}
           <li class="nav-item">
-          <a class="nav-link" href={{url_for('logout')}}>Logout</a>
+          <a class="nav-link" href={{url_for('logout')}}>Wyloguj</a>
         </li>
         {% else %}
-         <li class="nav-item">
-          <a class="nav-link" href={{url_for('add_user')}}>Register</a>
-        </li>
           <li class="nav-item">
-          <a class="nav-link" href={{url_for('login')}}>Login</a>
+          <a class="nav-link" href={{url_for('login')}}>Zaloguj</a>
         </li>
         {% endif %}
-          <li class="nav-item">
-          <a class="nav-link" href={{url_for('add_post')}}>Add Blog Post</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href={{url_for('posts')}}>Posts</a>
-        </li>
-          </ul>
-        </li>
       </ul>
       <form method="POST" action="{{ url_for('search')}}" class="d-flex">
         {{ form.hidden_tag() }}
